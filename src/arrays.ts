@@ -102,14 +102,12 @@ export function makeMath(addends: number[]): string {
 export function injectPositive(values: number[]): number[] {
     const newValues = [...values];
     const firstNegative = newValues.findIndex((value: number) => value < 0);
-    const index = firstNegative < 0 ? values.length : firstNegative + 1;
+    const index = firstNegative < 0 ? values.length : firstNegative;
     const sum = newValues.reduce(
         (previous: number, current: number, currentIndex: number) =>
-            firstNegative < 0 || currentIndex < firstNegative
-                ? previous + current
-                : previous,
+            currentIndex < index ? previous + current : previous,
         0
     );
-    newValues.splice(index, 0, sum);
+    newValues.splice(index + 1, 0, sum);
     return newValues;
 }
