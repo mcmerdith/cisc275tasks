@@ -1,7 +1,7 @@
 import { idText } from "typescript";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
-import { makeBlankQuestion } from "./objects";
+import { duplicateQuestion, makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -235,5 +235,11 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    const copied = [...questions];
+    const found = copied.findIndex(
+        (question: Question) => question.id === targetId
+    );
+    const copy = duplicateQuestion(newId, copied[found]);
+    copied.splice(found + 1, 0, copy);
+    return copied;
 }
