@@ -179,7 +179,18 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    return [...questions].map((question: Question) => {
+        /** FIX YOUR LINTERS! THERES NO REASON I SHOULDN'T BE ABLE TO ONE-LINER THIS! */
+        if (question.id !== targetId) return question;
+
+        const newOptions =
+            newQuestionType === "short_answer_question" ? [] : question.options;
+        return {
+            ...question,
+            type: newQuestionType,
+            options: newOptions
+        };
+    });
 }
 
 /**
