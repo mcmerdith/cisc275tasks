@@ -15,10 +15,11 @@ import { GiveAttempts } from "./form-components/GiveAttempts";
 import { EditMode } from "./form-components/EditMode";
 import { MultipleChoiceQuestion } from "./form-components/MultipleChoiceQuestion";
 import { ChangeColor } from "./form-components/ChangeColor";
+import { Container } from "react-bootstrap";
 
 function App(): JSX.Element {
     return (
-        <div className="App">
+        <Container className="App">
             <header className="App-header">
                 Matt Meredith&apos;s UD CISC275 with React Hooks and TypeScript
             </header>
@@ -55,7 +56,7 @@ function App(): JSX.Element {
             <ChangeType></ChangeType>
             <hr />
             <CycleHoliday></CycleHoliday>
-        </div>
+        </Container>
     );
 }
 
